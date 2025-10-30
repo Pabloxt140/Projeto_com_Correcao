@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Solicitar Licença Ambiental</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6fb;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            background: #fff;
+            max-width: 500px;
+            margin: 40px auto;
+            padding: 30px 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(44,62,80,0.1);
+        }
+        h2 {
+            color: #2a5298;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #2a5298;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 18px;
+            border: 1px solid #bfc9d9;
+            border-radius: 4px;
+            font-size: 15px;
+        }
+        button {
+            background: #2a5298;
+            color: #fff;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.2s;
+        }
+        button:hover {
+            background: #1e3c72;
+        }
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 18px;
+            color: #2a5298;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Adicionar Nova Solicitação à Lista</h2>
+        <form method="post" action="{{ url_for('nova_solicitacao') }}">
+            <label for="empresa">Empresa</label>
+            <input type="text" id="empresa" name="empresa" required>
+
+            <label for="cnpj">CNPJ</label>
+            <input type="text" id="cnpj" name="cnpj" required>
+
+            <label for="endereco">Endereço</label>
+            <input type="text" id="endereco" name="endereco" required>
+
+            <label for="proprietario">Proprietário</label>
+            <input type="text" id="proprietario" name="proprietario" required>
+
+            <label for="tipo_licenca">Tipo de Licença</label>
+            <select id="tipo_licenca" name="tipo_licenca" required>
+                <option value="">Selecione...</option>
+                <option value="Ambiental">Licença Previa</option>
+                <option value="Funcionamento">Licença Instalação</option>
+                <option value="Sanitária">Licença Operação</option>
+            </select>
+
+            <button type="submit">Adicionar à Lista</button>
+        </form>
+        <a href="{{ url_for('listar') }}">Voltar para lista</a>
+    </div>
+</body>
+</html>
